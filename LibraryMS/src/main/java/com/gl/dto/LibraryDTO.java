@@ -1,6 +1,7 @@
 package com.gl.dto;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +16,6 @@ public class LibraryDTO {
 	private int id;
 	private String name;
 	private String address;
-	private Set<BookDTO> books;
+	private Set<BookDTO> books=new HashSet<>();
 
 }

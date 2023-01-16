@@ -26,9 +26,9 @@ public class LibraryController {
 	@PostMapping("/")
 	public ResponseEntity<LibraryDTO> addLibrary(@RequestBody LibraryDTO libraryDTO)
 	{
-		libraryDTO=service.addLibrary(libraryDTO);
-		int lid=libraryDTO.getId();
-		System.out.println(libraryDTO.getBooks());
+		LibraryDTO addedlibraryDTO=service.addLibrary(libraryDTO);
+		int lid=addedlibraryDTO.getId();
+		
 		RestTemplate template=new RestTemplate();
 		String _apiURL="http://localhost:8200/books/";
 		Set<BookDTO> books=new HashSet<BookDTO>();
@@ -39,9 +39,9 @@ public class LibraryController {
 			BookDTO addedBook=template.postForEntity(_apiURL,b,BookDTO.class).getBody();
 			books.add(addedBook);
 		}
-		libraryDTO.setBooks(books);
+		addedlibraryDTO.setBooks(books);
 		
-		return new ResponseEntity<>(libraryDTO,HttpStatus.OK);
+		return new ResponseEntity<>(addedlibraryDTO,HttpStatus.OK);
 	}
 
 }
