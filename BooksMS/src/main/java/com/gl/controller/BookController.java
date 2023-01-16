@@ -52,5 +52,4 @@ public class BookController {
 		String msg=service.deleteBookDetails(id);
 		return new ResponseEntity<>(msg,HttpStatus.OK);
 	}
-
 }

@@ -84,12 +84,16 @@ public class LibraryController {
 	{
 		RestTemplate template=new RestTemplate();
 		String _apiURL="http://localhost:8200/books/{libraryId}";
+		
 		ResponseEntity<Set> response=template.getForEntity(_apiURL,Set.class,id);
 		Set<BookDTO> books=response.getBody();
 		System.out.println(books);
-		for(BookDTO b :books)
+		
+		String deleteURL="http://localhost:8200/books/";
+		for(BookDTO b:books)
 		{
-			template.delete("http://localhost:8200/books/"+b.getId());
+			deleteURL=deleteURL+b.getId();
+			template.delete(deleteURL);
 		}
 		
 		String res=service.deleteLibrary(id);

@@ -1,6 +1,7 @@
 package com.gl.service;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -48,8 +49,11 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public String deleteBookDetails(int id) {
 		repository.deleteById(id);
+		
 		return "Deleted";
 	}
+	
+	
 
 	@Override
 	public List<BookDTO> getAllBooks() {
@@ -88,9 +92,4 @@ public class BookServiceImpl implements BookService{
 		
 		return bookDTOs;
 	}
-
-	
-
-	
-
 }

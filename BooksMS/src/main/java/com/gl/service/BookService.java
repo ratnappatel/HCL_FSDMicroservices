@@ -15,6 +15,7 @@ public interface BookService {
 	public String deleteBookDetails(int id);
 	public List<BookDTO> getAllBooks();
 	
+	
 	public Set<BookDTO> getBookByLibraryId(int libraryId);
 
 }
